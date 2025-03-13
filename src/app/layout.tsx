@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       "Una moderna aplicación de redes sociales impulsada por Next.js, Tailwaind, TypeScript",
     siteName: "Socially App",
     url: "https://osocially.vercel.app/",
-    images: "/public/logo1.jpg",
+    images: "/logo1.jpg",
     type: "website",
   },
 };

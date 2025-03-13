@@ -19,8 +19,16 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://osocially.vercel.app/"),
   title: "Socially",
-  description: "A modern social media application powered by Next.js",
+  openGraph: {
+    description:
+      "Una moderna aplicación de redes sociales impulsada por Next.js, Tailwaind, TypeScript",
+    siteName: "Socially App",
+    url: "https://osocially.vercel.app/",
+    images: "/public/logo1.jpg",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

@@ -7,7 +7,7 @@ import { syncUser } from "@/actions/user.action";
 async function Navbar() {
   //Funciones para registrar o confirmar al usuario en la base de datos
   const user = await currentUser();
-  console.log("soy user id que viene de clerck navbar >>", user?.id)
+  // console.log("soy user id que viene de clerck navbar >>", user?.id)
   if (user) await syncUser(); // POST
 
   return (

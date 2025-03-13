@@ -18,13 +18,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
-import { useAuth, SignInButton, SignOutButton } from "@clerk/nextjs";
+import { useAuth, SignInButton, SignOutButton, useUser } from "@clerk/nextjs"; // Importa useUser
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
 function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isSignedIn } = useAuth();
+  const { user } = useUser(); // Obtén los datos del usuario
   const { theme, setTheme } = useTheme();
 
   return (
@@ -82,7 +83,17 @@ function MobileNavbar() {
                   asChild
                   onClick={() => setShowMobileMenu(false)}
                 >
-                  <Link href="/profile">
+                  <Link
+                    href={
+                      user
+                        ? `/profile/${
+                            user.emailAddresses[0].emailAddress.split("@")[0]
+                          }`
+                        : "/profile"
+                    }
+                  >
+                    {" "}
+                    {/* Enlace dinámico */}
                     <UserIcon className="w-4 h-4" />
                     Profile
                   </Link>
@@ -98,7 +109,7 @@ function MobileNavbar() {
                 </SignOutButton>
               </>
             ) : (
-              <SignInButton mode="modal">
+              <SignInButton mode="redirect">
                 <Button variant="default" className="w-full">
                   Sign In
                 </Button>
